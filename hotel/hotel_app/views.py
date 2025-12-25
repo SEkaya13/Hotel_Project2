@@ -8,7 +8,7 @@ from datetime import datetime
 def index(request):
     return JsonResponse({'message': 'Hotel API is running'})
 
-def get_room_detail(request, room_id):
+def room_detail(request, room_id):
     try:
         room = HotelRooms.objects.get(pk=room_id)
         room_data = {
@@ -55,7 +55,7 @@ def get_list_hotel_room(request):
     return JsonResponse(rooms_list, safe=False)
 
 @csrf_exempt
-def add_room(request):
+def new_room(request):
 
     if request.method == 'POST':
         description = request.POST.get('description', '').strip()
@@ -82,7 +82,7 @@ def add_room(request):
     return JsonResponse({'error': 'POST method required'}, status=405)
 
 @csrf_exempt
-def delete_room(request, room_id):
+def del_room(request, room_id):
 
     if request.method not in ['DELETE', 'POST']:
         return JsonResponse({'error': 'DELETE or POST method required'}, status=405)
@@ -96,7 +96,7 @@ def delete_room(request, room_id):
 
 
 
-def get_reservations(request, room_id):
+def reservations(request, room_id):
     try:
         room = HotelRooms.objects.get(pk=room_id)
 
@@ -119,7 +119,7 @@ def get_reservations(request, room_id):
         return JsonResponse({'error': str(e)}, status=500)
 
 @csrf_exempt
-def create_reservation(request):
+def new_reservation(request):
     if request.method == 'POST':
         room_id = request.POST.get('room_id', '').strip()
         date_start = request.POST.get('date_start', '').strip()
@@ -162,7 +162,7 @@ def create_reservation(request):
     return JsonResponse({'error': 'POST method required'}, status=405)
 
 @csrf_exempt
-def delete_reservation(request, booking_id):
+def del_reservation(request, booking_id):
     if request.method not in ['DELETE', 'POST']:
         return JsonResponse({'error': 'DELETE or POST method required'}, status=405)
 

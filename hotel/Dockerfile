@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
 COPY ../requirements.txt .
 
 # Устанавливаем Python зависимости
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt uvicorn
+COPY .env .
 
 # Копируем весь проект
 COPY . .
@@ -28,4 +29,4 @@ COPY . .
 EXPOSE 8000
 
 # Запускаем сервер
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["uvicorn", "hotel:application", "--host", "0.0.0.0", "--port", "8000"]
