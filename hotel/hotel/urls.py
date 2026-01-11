@@ -15,12 +15,17 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from hotel_app.views import page_not_found
+from django.urls import path, re_path, include
+from hotel_app.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('hotel_app.urls'))
+    path('api/v1/hotel/', HotelRoomsList.as_view()),
+    path('api/v1/hotel/<int:pk>/', HotelRoomsUpdate.as_view()),
+    path('api/v1/hoteldelete/<int:pk>/', HotelRoomsDestroy.as_view()),
+    path('api/v1/reservations/', ReservationsList.as_view()),
+    path('api/v1/reservarions/<int:pk>/', ReservationsUpdate.as_view()),
+    path('api/v1/reservationsdelete/<int:pk>/', ReservationsDestroy.as_view()),
 ]
 
-handler404 = page_not_found
