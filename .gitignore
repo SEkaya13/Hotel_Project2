@@ -1,0 +1,75 @@
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Django
+*.sqlite3
+*.sqlite
+hotel/db.sqlite3
+/media/
+/staticfiles/
+.django_cache
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Database backups
+*.sql
+*.sql.gz
+
+# Docker
+.docker/
+
+# Node (if using with frontend)
+node_modules/
+npm-debug.log
+
+# Misc
+.tmp/
+temp/
+*.bak
+.idea
